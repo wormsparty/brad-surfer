@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#000000">
+  <title>Big Wave Brad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js" } }
+  </script>
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="hud" class="hidden">
+    <div id="score">0</div>
+    <div id="shells"><span class="shell-icon"></span><span id="shell-count">0</span></div>
+    <div id="lives"></div>
+    <div id="boost" class="hidden">BOOST!</div>
+    <div id="progress"><div id="progress-fill"></div><div id="progress-dude"></div></div>
+    <button id="pause-btn" class="touch-only" aria-label="Pause">II</button>
+  </div>
+
+  <!-- commandes tactiles (affichées seulement sur écran tactile, pendant la partie) -->
+  <div id="touch-controls" class="hidden">
+    <div class="pad left">
+      <button data-action="up" aria-label="Back lane">&#9650;</button>
+      <button data-action="down" aria-label="Front lane">&#9660;</button>
+    </div>
+    <div class="pad right">
+      <button data-action="jump" class="wide">JUMP</button>
+      <button data-action="duck" class="wide">DUCK</button>
+    </div>
+  </div>
+
+  <div id="popups"></div>
+
+  <div id="screen-title" class="screen">
+    <h1><span>BIG WAVE</span><span class="big">BRAD</span></h1>
+    <p class="blink kb-only">PRESS ENTER</p>
+    <p class="blink touch-only">TAP TO PLAY</p>
+    <div class="controls kb-only">
+      <div><kbd>SPACE</kbd> jump</div>
+      <div><kbd>SHIFT</kbd> duck (hold)</div>
+      <div><kbd class="arrow">&uarr;</kbd><kbd class="arrow">&darr;</kbd> change lane</div>
+      <div><kbd>P</kbd> pause &nbsp; <kbd>M</kbd> sound</div>
+    </div>
+    <div class="controls touch-only">
+      <div><kbd>JUMP</kbd> jump</div>
+      <div><kbd>DUCK</kbd> duck (hold)</div>
+      <div><kbd>&#9650;</kbd><kbd>&#9660;</kbd> change lane</div>
+    </div>
+  </div>
+
+  <div id="screen-pause" class="screen hidden">
+    <h2>PAUSE</h2>
+    <p class="blink kb-only">PRESS P TO RESUME</p>
+    <p class="blink touch-only">TAP TO RESUME</p>
+    <button id="mute-btn" class="touch-only">SOUND: ON</button>
+  </div>
+
+  <div id="screen-over" class="screen hidden">
+    <h2>WIPEOUT!</h2>
+    <p id="over-stats"></p>
+    <p class="blink kb-only">PRESS ENTER TO PLAY AGAIN</p>
+    <p class="blink touch-only">TAP TO PLAY AGAIN</p>
+  </div>
+
+  <div id="screen-win" class="screen hidden">
+    <h2>TOTALLY RADICAL!</h2>
+    <div class="win-body">
+      <div id="medal" class="hidden">
+        <div class="ribbon"><span></span><span></span></div>
+        <div class="disc"><span class="shell-icon"></span></div>
+        <div class="medal-label">GOLD MEDAL<br><span id="medal-count"></span></div>
+      </div>
+      <div id="win-stats"></div>
+    </div>
+    <p class="blink kb-only">PRESS ENTER TO PLAY AGAIN</p>
+    <p class="blink touch-only">TAP TO PLAY AGAIN</p>
+  </div>
+
+  <div id="rotate" class="touch-only">
+    <div class="phone"></div>
+    <p>ROTATE YOUR PHONE</p>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
